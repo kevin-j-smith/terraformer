@@ -16,6 +16,7 @@ package aws
 
 import (
 	"context"
+  "fmt"
 	"strings"
 
 	"github.com/GoogleCloudPlatform/terraformer/terraformutils"
@@ -91,6 +92,10 @@ func (g *Ec2Generator) InitResources() error {
 
 func (g *Ec2Generator) PostConvertHook() error {
 	for _, r := range g.Resources {
+    if r.InstanceState.Attributes["instance_state"] == "stopped" {
+      fmt.Println("instance is stopped")
+      continue
+    }
 		if r.InstanceInfo.Type != "aws_instance" {
 			continue
 		}

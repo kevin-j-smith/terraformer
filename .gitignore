@@ -3,7 +3,7 @@ generated
 terraformer*
 cmd/tmp
 .DS_Store
-.terraform
+**/.terraform*
 .vscode
 terraform.tfstate
 terraform.tfstate.backup
